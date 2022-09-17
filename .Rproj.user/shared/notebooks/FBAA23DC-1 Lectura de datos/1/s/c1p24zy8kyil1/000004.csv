@@ -1,0 +1,6 @@
+"0","Becarios_2020 %>% "
+"0","   dplyr::group_by(Costeo_de_estudios) %>% "
+"0","   dplyr::summarize("
+"0","     mean(Edad),"
+"0","     median(Edad)"
+"0","   )"

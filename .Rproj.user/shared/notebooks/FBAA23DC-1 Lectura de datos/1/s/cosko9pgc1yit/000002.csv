@@ -1,0 +1,38 @@
+"0","library(readr)"
+"0","Becarios_2020 <- read_delim(""C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2020.csv"", "
+"0","    "";"", escape_double = FALSE, trim_ws = TRUE)"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m----------------------------------------------------[39m
+cols(
+  .default = col_character(),
+  Edad = [32mcol_double()[39m,
+  DNI = [32mcol_double()[39m,
+  `A<U+663C><U+3E31>o_de_inicio_del_CPU` = [32mcol_double()[39m,
+  Cuantos_cuatrimestres_le_llevo_aprobar_el_CPU = [32mcol_double()[39m,
+  `A<U+663C><U+3E31>o_de_inicio_de_carrera` = [32mcol_double()[39m,
+  `Cantidad_de_materias_que cursa` = [32mcol_double()[39m,
+  Finales_pendientes = [32mcol_double()[39m
+)
+[36mi[39m Use [38;5;235m[48;5;253m[38;5;235m[48;5;253m`spec()`[48;5;253m[38;5;235m[49m[39m for the full column specifications.
+
+"
+"0","View(Becarios_2020)"
+"0",""
+"0","Becarios_2021 <- read_delim(""C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2021.csv"", "
+"0","    "";"", escape_double = FALSE, trim_ws = TRUE)"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m----------------------------------------------------[39m
+cols(
+  .default = col_character(),
+  Edad = [32mcol_double()[39m,
+  DNI = [32mcol_double()[39m,
+  `A<U+663C><U+3E31>o_de_inicio_del_CPU` = [32mcol_double()[39m,
+  Cuantos_cuatrimestres_le_llevo_aprobar_el_CPU = [32mcol_double()[39m,
+  `A<U+663C><U+3E31>o_de_inicio_de_carrera` = [32mcol_double()[39m,
+  `Cantidad_de_materias_que cursa` = [32mcol_double()[39m,
+  Finales_pendientes = [32mcol_double()[39m
+)
+[36mi[39m Use [38;5;235m[48;5;253m[38;5;235m[48;5;253m`spec()`[48;5;253m[38;5;235m[49m[39m for the full column specifications.
+
+"
+"0","View(Becarios_2021)"

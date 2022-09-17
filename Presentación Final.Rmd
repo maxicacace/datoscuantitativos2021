@@ -1,0 +1,262 @@
+---
+title: "Presentación Final"
+author: "Lic. Maximiliano Cacace Bach"
+date: "5 de julio 2021"
+output: 
+  beamer_presentation: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+  slidy_presentation: default
+subtitle: Métodos cuantitativos y análisis de datos grandes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+```
+## Algunas caracteríticas de los becarios de la ECyT-UNSAM
+
+En este trabajo se describe al grupo de becarios de grado de la Escuela de Ciencia y Tecnología de la Universidad Nacional de San Martín del año 2020. Se basa en datos obtenidos a través de formularios de encuesta. Son datos de uso institucional. Se propone una hipótesis para ponerla a prueba a los fines de este seminario.
+
+Es un estudio de tipo exploratorio-descriptivo. La población es finita, son lxs estudiantes con beca de apoyo económico, la cual a su vez es una muestra y representación de la población total estudiantil de la Escuela de Ciencia y Tecnología de la UNSAM.
+
+## Datos
+
+Los datos reúnen las respuestas obtenidas a partir de encuestas a becarixs de la ECyT, en período 2020. Se han obtenido 164 respuestas de un total de 184 becarios.
+
+La encuesta tiene 32 + - 14 preguntas/variables, en función de la opción que eligieron. Para este trabajo se seleccionaron 5 variables que combinan variables nominales (3) y de ratio (2).
+
+## Variables analizadas
+
+### Edad de los becarios
+
+Esta variable es:
+
+* De ratio y 
+* Discreta
+
+### Tiempo de beca
+
+Esta variable es:
+
+* De ratio 
+* de 5 niveles y
+* Continua
+
+## Variables analizadas II
+  
+### Costeo de estudios
+
+Esta variable es:
+
+* Nominal
+* de 5 niveles y
+* Discreta
+
+### Trabajo
+
+Esta variable es:
+
+* Nominal
+* de 2 niveles y
+* Discreta
+
+### Con quien vive
+
+Esta variable es:
+
+* Nominal
+* de 4 niveles y 
+* Discreta
+
+
+## Tipo de Estudio: Descriptivo 
+
+Se hace un análisis descriptivo de los datos. Se eligen medidas de:
+
+* Tendencia central -> Media para Edad y Tiempo de Estudio
+* Dispersión -> Rango, Rango intercuartil en Edad y Desviación Estándar en Edad y Tiempo de Estudio
+* Como no se puede sacar en R, no está la Moda de las demás variables
+
+## Hipótesis
+
+* $H_0: \text{La variable Edad tiene distribución normal}$
+* $H_1: \text{La variable Edad no tiene distribución normal}$
+
+## Hipótesis: Test aplicable
+
+Para refutar o no la hipótesis nula se utilizará 
+
+Prueba paramétrica:
+
+*El test de Shapiro-Wilks
+
+```{r Excel}
+library(readxl)
+Becarios_2020 <- read_excel("C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2020.xlsx")
+#View(Becarios_2020)
+
+Becarios_2021 <- read_excel("C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2021.xlsx")
+```
+
+```{r Cambiar factor y nombre de respuesta a Tiempo_de_beca}
+Tiempo_de_beca_numeric2020 <-
+  lapply(Becarios_2020$Tiempo_de_beca, function(x){
+    
+    switch(x,
+           "Este es el primer año" = 0.5,
+           "1 año" = 1,
+           "2 años" = 2,
+           "3 años" = 3,
+           "4 años" = 4)
+  }) %>% 
+  unlist()
+```
+
+```{r Cambiar factor y nombre de respuesta a Costeo_de_estudios}
+Costeo_de_estudios2020 <-
+  lapply(Becarios_2020$Costeo_de_estudios, function(x){
+    
+    switch(x,
+           "Aportes familiares" = "Aportes familiares",
+           "Beca" = "Beca",
+           "Con dificultad para costear sus estudios" = "Con dificultad",
+           "Plan social" = "Plan social",
+           "Trabajo" = "Trabajo")
+  }) %>% 
+  unlist()
+
+Costeodeestudios2020 <- table(Costeo_de_estudios2020)
+```
+
+```{r Cambiar factor y nombre de respuesta a Con_quien_vive}
+Con_quien_vive2020 <-
+  lapply(Becarios_2020$Con_quien_vive, function(x){
+    
+    switch(x,
+           "Amigos/compañeros" = "Amigos/compañeros",
+           "Familia" = "Familia",
+           "Solo" = "Solo",
+           "Pareja" =  "Pareja")
+  }) %>% 
+  unlist()
+
+Conquienvive2020 <- table(Con_quien_vive2020)
+```
+
+```{r Cambiar factor y nombre de respuesta a Trabajo}
+Trabajo2020 <-
+  lapply(Becarios_2020$Trabajo, function(x){
+    
+    switch(x,
+           "No, pero se encuentra buscando trabajo" = "No, pero se encuentra buscando trabajo",
+           "No, por decisión propia" = "No, por decisión propia ",
+           "Si" = "Si")
+  }) %>% 
+  unlist()
+
+Trabajo2020 <- table(Trabajo2020)
+```
+
+## Análisis descriptivo: Edad
+
+```{r Edad}
+ggplot() + 
+  geom_density(data=Becarios_2020, aes(x=Edad), color='black')
+```
+No tiene distribución normal. Tiene sesgo positivo, mayor cantidad de becarios entre los "17 y 28 años".
+
+## Análisis descriptivo: Tiempo de beca
+
+```{r}
+options(scipen=100)
+Becarios_2020 %>% 
+  ggplot(aes(x=Tiempo_de_beca_numeric2020))+
+  geom_histogram()
+```
+
+Sesgo positivo también, la mayor cantidad de becarios está en su primer año de beca.
+
+## Análisis descriptivo: Costeo de estudios
+
+```{r}
+barplot (Costeodeestudios2020, ylab = "Cantidad de becarios", main = "¿Cómo costea sus estudios?")
+```
+
+## Análisis descriptivo: Trabajo
+
+```{r}
+pie (Trabajo2020, ylab = "Cantidad de becarios", main = "Trabajo")
+```
+
+## Análisis descriptivo: Con quien vive
+
+```{r}
+barplot (Conquienvive2020, ylab = "Cantidad de becarios", main = "¿Con quién vive?")
+```
+
+## Edad x Costeo de Estudios
+
+```{r}
+Becarios_2020 %>% 
+  ggplot(aes(x=Edad, fill=Costeo_de_estudios2020))+
+  geom_density(alpha=.4)
+```
+
+## Edad x Con quien vive 
+
+```{r}
+Becarios_2020 %>% 
+  ggplot(aes(x=Edad, fill=Con_quien_vive))+
+  geom_density(alpha=.4)
+```
+
+## Edad x Trabajo
+
+```{r}
+Becarios_2020 %>% 
+  ggplot(aes(x=Edad, fill=Trabajo))+
+  geom_density(alpha=.4)
+```
+A partir de los 28/30 años disminuyen los becarios que no estan trabajando o que no están buscando trabajo.
+
+## Centralización y Dispersión
+
+### Media y mediana de Edad
+
+```{r Centralización: Calcular y asignar vector a Promedio y Media de Edad}
+mean(Becarios_2020$Edad) -> promedio_Edad2020
+promedio_Edad2020
+
+median(Becarios_2020$Edad) -> median_Edad2020 
+median_Edad2020
+
+range(Becarios_2020$Edad) #Rango o Amplitud de la variable (valor máx. y min.)
+
+sd(Becarios_2020$Edad) #Desviación Estándar
+
+summary(Becarios_2020$Edad) #Resumen
+```
+### Media y Desviación Estándar de Tiempo de beca
+
+```{r Centralización: Calcular y asignar vector a Promedio y Media de Tiempo de beca}
+mean(Tiempo_de_beca_numeric2020) -> promedio_Tiempo_de_beca_numeric
+promedio_Tiempo_de_beca_numeric
+
+sd(Tiempo_de_beca_numeric2020) #Desviación Estándar
+```
+## Análisis: Hipótesis
+
+* $H_0: \text{La variable Edad tiene distribución normal}$
+* $H_1: \text{La variable Edad no tiene distribución normal}$
+
+Nivel de significanza = 0.5
+
+```{r}
+shapiro.test(Becarios_2020$Edad)
+```
+El valor de p es inferior al nivel alfa, por ende, se rechaza la hipótesis nula. La variable Edad no tiene distribución normal.

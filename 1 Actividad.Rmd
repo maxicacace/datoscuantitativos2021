@@ -1,0 +1,94 @@
+---
+title: "Análisis de Encuestas a Becarixs"
+author: "Maximiliano Cacace"
+date: "Métodos Cuantitativos y Análisis de Datos Grandes"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Es un estudio de tipo exploratorio-descriptivo. Por ello no tiene hipótesis ni nivel de significanza (alfa).La población es finita, son lxs estudiantes con beca de apoyo económico, el cual a su vez es una muestra y representación de la población total estudiantil de la Escuela de Ciencia y Tecnología de la UNSAM.
+
+\pagebreak
+
+## Sobre la encuesta
+
+Los datos reúnen las respuestas obtenidas a partir de encuestas a becarixs de la ECyT, en dos períodos, 2020 y 2021. En el año 2020 tenemos 164 respuestas de un total de 184 becarixs. En el año 2021, 151 respuestas de un total 155 becarixs.
+
+La encuesta tiene 32 + - 14 preguntas/variables, en función de la opción que eligieron. Para este trabajo se seleccionaron 14 variables que combinan variables nominales (8) y de ratio (6). Se detallan a continuación.
+
+## Variables
+
+1. Edad (RATIO)
+
+2. Nacionalidad (NOMINAL)
+
+3. Carrera (NOMINAL)
+
+4. Hace cuanto tiempo tiene la Beca (RATIO)
+  * Menos de 1 año
+  * 1 año
+  * 2 años
+  * 3 años
+  * 4 años
+  
+5. Cómo costea sus estudios (NOMINAL)
+  * Trabajo
+  * Aportes familiares
+  * Beca
+  * Plan social
+  * Con dificultad para costear los estudios
+  
+6. ¿Con quién vive? (NOMINAL)
+  * Familia
+  * Pareja
+  * Solo
+  * Con amigos/compañeros
+
+7. ¿Cuánto tiempo transcurrió desde que finalizo el secundario hasta ingresar a la universidad? (RATIO)
+  * Menos de 1 año
+  * 1 año
+  * Entre 1 y 5 años
+  * Más de 5 años
+  
+8. ¿Trabaja? (SI/NO/No pero se encuentra buscando) (NOMINAL)
+	
+## Si respondió que SI
+
+9. ¿Cuántas horas trabaja semanalmente? (RATIO)
+
+* Menos de 10 horas
+* Entre 10 y 20 horas
+* Entre 20 y 30 horas
+* 40 o más horas
+
+## Sobre el CPU 
+
+10. ¿Aprobó el CPU? (SI/NO) (NOMINAL)
+
+11. ¿En qué año comenzó a cursar el CPU? (NOMINAL)
+
+12. Si ya aprobó el CPU ¿Cuántos cuatrimestres le llevó aprobar el CPU? (RATIO)
+
+## Sobre la Carrera
+
+13. Año de inicio de la Carrera (NOMINAL)
+
+14. ¿Cuántas horas semanales apróx. destina a estudiar? (sin contar el tiempo de cursada) (RATIO)
+
+  * Menos de 10 horas
+  * Entre 10 y 20 horas
+  * Más de 20 horas
+
+
+
+
+
+
+
+
+
+
+

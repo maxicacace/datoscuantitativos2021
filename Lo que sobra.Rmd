@@ -1,0 +1,43 @@
+---
+title: "Lo que sobra"
+author: "Maximiliano Cacace"
+date: "5/7/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+Tiempo_de_beca_numeric2020
+```
+
+
+```{r}
+Tiempo_de_beca_numeric2020 %>%
+  class()
+
+table(Tiempo_de_beca_numeric2020)
+```
+
+## Gráficos
+
+```{r}
+Becarios_2020 %>% 
+  ggplot(aes(Tiempo_de_beca_numeric2020, Edad))+
+  geom_smooth(method = "lm")+
+  scale_y_continuous()+
+  scale_x_discrete()
+```
+
+```{r}
+Becarios_2021 %>% 
+  ggplot(aes(Tiempo_de_beca_numeric2020))+
+  geom_density()
+```
+
+```{r}
+table(Becarios_2020$Trabajo)
+table(Becarios_2020$Carrera_que_cursa)
+```

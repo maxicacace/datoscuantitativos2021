@@ -1,0 +1,4 @@
+"0","library(ggplot2)"
+"0","Becarios_2020 %>% "
+"0","  ggplot(aes(x=Edad, fill=Costeo_de_estudios))+"
+"0","  geom_histogram(binwidth = 10000)"
