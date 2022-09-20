@@ -14,11 +14,28 @@ UNTREF
 mcacace@untref.edu.ar
 
 Resumen 500 palabras
-El presente trabajo muestra un uso en educación del lenguaje de programación R. Se mostrará su uso para la visualización y comparación del mismo conjunto de datos en dos períodos (2020-2021). Los datos se obtuvieron a partir de un modelo de encuesta realizado en el Programa de Pedagogía Universitaria de la Escuela de Ciencia y Tecnología de la UNSAM, con la coordinación de la Dra. Stella Maris Muiños de Britos, en conjunto con la Lic. Laura Bailaque y la Lic. Magdalena Rabini.
 
-Los conjuntos de datos reúnen las respuestas obtenidas a partir de un formulario con 32 +-14 preguntas/variables. Para este trabajo se han seleccionado solamente 5 variables: “Edad”, “Tiempo de beca”, “Costeo de Estudios” y “Trabajo”.
+El presente trabajo muestra un uso en educación del lenguaje de programación R. Se mostrará su uso para la visualización y comparación de datos obtenidos, en dos períodos, a partir de un modelo de encuesta, realizado en el Programa de Pedagogía Universitaria de la Escuela de Ciencia y Tecnología de la UNSAM, con la coordinación de la Dra. Stella Maris Muiños de Britos, en conjunto con la Lic. Laura Bailaque y la Lic. Magdalena Rabini.
 
- becarixs de la ECyT, en período 2020. Se han obtenido 164
-respuestas de un total de 184 becarios
+Además, se pretende ampliar el uso de lo que actualmente se conoce como metodologías de learning analytics, utilizados como sistemas inteligentes para la gestión y toma de decisiones basada en datos en educación. Esto para, por un lado, considerar, no sólo los datos que se recaban desde un virtual learning enviroment, sino también, para tener en cuenta este instrumento en las relaciones educativas clásicas.
 
-Es un trabajo de tipo exploratorio-descriptivo sobre la conformación de una población finita de estudiantes de las carreras de grado y pre-grado con beca de apoyo económico en dicho período. con datos obtenidos a través de encuestas en una institución educativa. Además, este trabajo pretende ampliar el uso de lo que actualmente se denomina como learning analitycs para la gestión y toma de decisiones basada datos en educación.
+Por otro lado, se propone no circunscribir solamente la recogida de datos a la huella digital que se produce en las plataformas de e-learning y las relaciones enseñanza-aprendizaje in situ, sino también incorporar al análisis otras variables importantes que afectan lo educativo y que hacen referencia al contexto.
+
+El trabajo es de tipo exploratorio-descriptivo sobre la conformación de una población finita de estudiantes con beca de apoyo económico para las carreras de grado y pre-grado de la Escuela de Ciencia y Tecnología de la UNSAM, en dos períodos (2020-2021).
+
+Los conjuntos de datos reúnen las respuestas obtenidas a partir de un formulario con 32 +-14 preguntas/variables. En el período 2020 se otuvieron respuestas de 164 becarios sobre un total de 184. En el período 2021, se obtuvieron respuestas de 151 becarios sobre un total de 155. 
+
+A los efectos de esta presentación, se han seleccionado solamente 5 de las variables, de tipo ratio y nominal, para describir y ofrecer una comparativa entre ambos períodos sobre la misma población. Las variables seleccionadas son “Edad”, “Tiempo de beca”, “Costeo de Estudios” y “Trabajo”.
+
+
+
+
+transformar datos en información 
+
+Los resultados premiliminares muestran expectativas para seguir trabajando en este campo con esta línea de trabajo.
+
+
+Palabras claves: learning analytics, data-drive-decision, big data, data science.
+
+
+Resultados de los patrones ---> se encontró inicialmente que 
