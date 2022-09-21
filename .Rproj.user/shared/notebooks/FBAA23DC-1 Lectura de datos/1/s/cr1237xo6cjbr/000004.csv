@@ -1,5 +1,0 @@
-"0","library(ggplot2)"
-"0","options(scipen=100)"
-"0","Becarios_2020 %>% "
-"0","  ggplot(aes(x=Edad))+"
-"0","  geom_histogram()"

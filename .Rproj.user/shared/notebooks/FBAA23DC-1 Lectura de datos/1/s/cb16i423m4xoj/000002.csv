@@ -1,4 +1,0 @@
-"0","library(ggplot2)"
-"0","Becarios_2020 %>% "
-"0","  ggplot(aes(Edad))+"
-"0","  geom_density()"
