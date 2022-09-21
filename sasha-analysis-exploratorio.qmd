@@ -1,0 +1,155 @@
+---
+title: "Analysis Exploratorio"
+author: "Aleksander Dietrichson, PhD"
+format: html
+editor: visual
+---
+
+## Datos Encuesta
+
+```{r setup}
+#| include: false
+
+knitr::opts_chunk$set(
+  #echo=FALSE
+  )
+library(tidyverse)
+library(readxl)
+library(ggthemes)
+theme_set(theme_bw())
+
+my_data <- readxl::read_excel(here::here("data","becarios-2020.xlsx") )
+my_data$Year <- "2020"
+
+my_data2 <- readxl::read_excel(here::here("data","becarios-2021.xlsx"))
+my_data2$Year <- "2021"
+my_data <- bind_rows(my_data,my_data2)
+
+```
+
+## Carreras
+
+```{r}
+my_data %>% 
+  group_by(Carrera_que_cursa) %>% 
+  count() %>% 
+  knitr::kable()
+```
+
+```{r}
+my_data %>% 
+  group_by(Carrera_que_cursa,Year) %>% 
+  count() %>% 
+  ggplot(aes(x=Carrera_que_cursa,y=n,fill=Year)) +
+  geom_col(position = "dodge") +
+  coord_flip()
+```
+
+Puede armarse unas categorias más ámplias separando en ingeneria/tecnicatura/licenciatura
+
+```{r include=FALSE}
+library(stringr)
+my_data <- my_data %>% 
+  mutate(
+    Titulo = case_when(
+      str_detect(Carrera_que_cursa,"Tecnic") ~ "Tecnicatura",
+      str_detect(Carrera_que_cursa,"Licen") ~ "Licenciatura",
+      str_detect(Carrera_que_cursa,"Ingen") ~ "Ingenieneria"
+    )
+  )
+
+```
+
+## Titulo para que se estudia
+
+```{r}
+my_data %>% 
+  group_by(Titulo,Year) %>% 
+  count() %>% 
+  ggplot(aes(x=Titulo,y=n,fill=Year)) +
+  geom_col(position = "dodge")
+```
+
+Vemos que bajan las ingenierias y licenciaturas y suben ligeramente las tecnicaturas.
+
+## Nacionalidades
+
+```{r}
+my_data %>% 
+  group_by(Nacionalidad) %>% 
+  count(sort = TRUE) %>% 
+  knitr::kable()
+```
+
+Para poder analizar correctamente la distribucion de nacionalidaded hay que normalizar los niveles de la variable. Se puede hacer con stringr de igual manera de lo que se hizo en el anterior
+
+
+## Modelo linear
+
+```{r}
+my_model <- try(
+  lm(Horas_semanales_destinadas_a_estudiar~Cuantos_cuatrimestres_le_llevo_aprobar_el_CPU, data=my_data)
+)
+```
+
+No funciona ya que estas variables están «en texto» si bien son númericas. Por ahí el trabajo consiste en convertir este texto (materia linguistica) en números y demostrar como hacerlo para llegar a poder armar un modelo. Por ejemplo:
+
+```{r}
+my_data %>% 
+ pull(Horas_semanales_destinadas_a_estudiar) %>% 
+  unique()
+```
+
+Entonces
+
+```{r}
+my_data <- my_data %>% 
+  mutate(Tiempo_de_estudio = case_when(
+    Horas_semanales_destinadas_a_estudiar ==  "Menos de 10 horas" ~10,
+    Horas_semanales_destinadas_a_estudiar ==  "Entre 10 y 20 horas"  ~15,
+    Horas_semanales_destinadas_a_estudiar ==  "Más de 20 horas" ~20
+    
+  ))
+```
+
+```{r}
+my_data %>% 
+ pull(Horas_semanales_de_trabajo) %>% 
+  unique()
+```
+
+En este caso tenemos alguna entrada ambigua *"Entre 20 y 30 horas, 40 horas o más".* Vemos su importe
+
+```{r}
+sum(my_data$Horas_semanales_de_trabajo=="Entre 20 y 30 horas, 40 horas o más",na.rm = TRUE)
+```
+
+OK Un sólo caso, con lo cual lo podremos ignorar.
+
+```{r}
+my_data <- my_data %>% 
+  mutate(Tiempo_de_trabajo = 
+           case_when(
+             Horas_semanales_de_trabajo == "Menos de 10 horas" ~ 10,
+             Horas_semanales_de_trabajo == "Entre 10 y 20 horas" ~ 15,
+             Horas_semanales_de_trabajo == "Entre 20 y 30 horas" ~ 35,
+             Horas_semanales_de_trabajo == "40 horas o más"  ~ 40,
+           ))
+```
+
+## Primeros pasos de un modelo
+Ahora tenemos variables cuantitativas y podemos por ejemplo hacer:
+
+```{r}
+cor.test(my_data$Tiempo_de_trabajo,my_data$Tiempo_de_estudio,use = "complete")
+```
+
+e incluso
+```{r}
+my_model <- lm(Tiempo_de_trabajo ~ Tiempo_de_estudio, data = my_data )
+```
+
+```{r}
+summary(my_model)
+```
+
