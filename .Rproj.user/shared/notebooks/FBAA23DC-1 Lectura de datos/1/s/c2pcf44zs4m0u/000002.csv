@@ -1,6 +1,0 @@
-"0",""
-"0","library(readxl)"
-"0","Becarios_2020 <- read_excel(""C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2020.xlsx"")"
-"0","View(Becarios_2020)"
-"0",""
-"0","Becarios_2021 <- read_excel(""C:/Users/hp/Desktop/TODO/UNSAM/Doctorado Ciencias Humanas/Métodos cuantitativos y análisis de grandes datos/BIG_DATA_CACACE/Becarios 2021.xlsx"")"

@@ -1,5 +1,0 @@
-"0","library(ggplot2)"
-"0","p <- ggplot(Becarios_2020)"
-"0","p <- p + aes (x = Edad, y = Costeo_de_estudios)"
-"0","p <- p + geom_point()"
-"0","p"
