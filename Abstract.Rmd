@@ -8,16 +8,17 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-Uso de R para el análisis de datos educativos
+title: Uso de R para el análisis de datos educativos
+subtitle: Un trabajo explotario sobre la arquitectura y gobierno de datos en educación
 Maximiliano Cacace Bach
 UNTREF
 mcacace@untref.edu.ar
 
 Resumen 500 palabras
 
-El presente trabajo muestra un uso en educación del lenguaje de programación R. Se mostrará su uso para la visualización y comparación de datos obtenidos, en dos períodos, a partir de un modelo de encuesta, realizado en el Programa de Pedagogía Universitaria de la Escuela de Ciencia y Tecnología de la UNSAM, con la coordinación de la Dra. Stella Maris Muiños de Britos, en conjunto con la Lic. Laura Bailaque y la Lic. Magdalena Rabini.
+El presente trabajo muestra un uso en educación del lenguaje de programación R. Se mostrará su uso para la transformación, visualización y comparación de datos obtenidos, en dos períodos, a partir de un modelo de encuesta, realizado en el Programa de Pedagogía Universitaria de la Escuela de Ciencia y Tecnología de la UNSAM, con la coordinación de la Dra. Stella Maris Muiños de Britos, en conjunto con la Lic. Laura Bailaque y la Lic. Magdalena Rabini.
 
-Además, se pretende ampliar el uso de lo que actualmente se conoce como metodologías de learning analytics, utilizados como sistemas inteligentes para la gestión y toma de decisiones basada en datos en educación. Esto para, por un lado, considerar, no sólo los datos que se recaban desde un virtual learning enviroment, sino también, para tener en cuenta este instrumento en las relaciones educativas clásicas.
+Además, se pretende ampliar el uso de lo que actualmente se conoce como metodologías de learning analytics, utilizados como sistemas inteligentes para la gestión y toma de decisiones basada en datos en educación. Esto para, por un lado, tener en cuenta, no sólo los datos que se recaban desde un virtual learning enviroment, sino también, para considerarlo como instrumento para obtener datos en las relaciones educativas clásicas.
 
 Por otro lado, se propone no circunscribir solamente la recogida de datos a la huella digital que se produce en las plataformas de e-learning y las relaciones enseñanza-aprendizaje in situ, sino también incorporar al análisis otras variables importantes que afectan lo educativo y que hacen referencia al contexto.
 
@@ -25,17 +26,12 @@ El trabajo es de tipo exploratorio-descriptivo sobre la conformación de una pob
 
 Los conjuntos de datos reúnen las respuestas obtenidas a partir de un formulario con 32 +-14 preguntas/variables. En el período 2020 se otuvieron respuestas de 164 becarios sobre un total de 184. En el período 2021, se obtuvieron respuestas de 151 becarios sobre un total de 155. 
 
-A los efectos de esta presentación, se han seleccionado solamente 5 de las variables, de tipo ratio y nominal, para describir y ofrecer una comparativa entre ambos períodos sobre la misma población. Las variables seleccionadas son “Edad”, “Tiempo de beca”, “Costeo de Estudios” y “Trabajo”.
+A los efectos de esta presentación, se han seleccionado 5 variables, de tipo ratio y nominal, para describir y ofrecer una comparativa entre ambos períodos sobre la misma población. 
 
+Se mostrarán las transformaciones linguísticas realizadas sobre la estructura de los datos (conversión de variables y vectores, family words, hiperónimos)y la gestión de los datasets como parte del gobierno de datos, para asegurar la calidad y disponibilidad de los mismos y para la obtención de información. 
 
-
-
-transformar datos en información 
+Palabras claves: learning analytics, data-drive-decision, data governance, data science, big data.
 
 Los resultados premiliminares muestran expectativas para seguir trabajando en este campo con esta línea de trabajo.
-
-
-Palabras claves: learning analytics, data-drive-decision, big data, data science.
-
 
 Resultados de los patrones ---> se encontró inicialmente que 
